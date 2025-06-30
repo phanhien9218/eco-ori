@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TikTok Auto Post Demo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+      background: #f7f7f7;
+      max-width: 600px;
+      margin: auto;
+    }
+    button, input {
+      padding: 10px 15px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .log {
+      margin-top: 30px;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      white-space: pre-line;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Demo: TikTok Video Auto Upload & Publish</h1>
+
+  <button onclick="login()">🔐 Login with TikTok</button>
+  <br><br>
+
+  <input type="file" id="videoFile" accept="video/*" />
+  <br>
+  <button onclick="upload()">⬆️ Upload Video</button>
+  <br>
+  <button onclick="publish()">🚀 Publish Video</button>
+
+  <div class="log" id="logBox">[Log started]</div>
+
+  <script>
+    function log(msg) {
+      document.getElementById("logBox").textContent += "\n" + msg;
+    }
+
+    function login() {
+      log("Redirecting to TikTok Login...");
+      setTimeout(() => {
+        log("✅ Logged in successfully as @demo_user");
+        log("Retrieved open_id: 123456789");
+      }, 1000);
+    }
+
+    function upload() {
+      const file = document.getElementById("videoFile").files[0];
+      if (!file) {
+        log("⚠️ Please select a video file to upload.");
+        return;
+      }
+      log(`Uploading video: ${file.name}...`);
+      setTimeout(() => {
+        log("✅ Video uploaded successfully!");
+        log("Received video_id: vid_abc123xyz");
+      }, 1500);
+    }
+
+    function publish() {
+      log("Publishing video to TikTok...");
+      setTimeout(() => {
+        log("✅ Video published successfully!");
+        log("You can now check it on the user's TikTok profile.");
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
